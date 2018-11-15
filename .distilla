@@ -1,0 +1,6 @@
+preview: true
+
+tasks:
+  npm run build:
+    - build/es5-unbundled/
+    - ./

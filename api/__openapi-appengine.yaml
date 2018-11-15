@@ -1,0 +1,98 @@
+swagger: '2.0'
+info:
+  description: "A Data API for easy access to Quick Draw data"
+  title: "Quick, Draw! Data API"
+  version: "1.0"
+host: "YOUR_PROJECT_ID.appspot.com"
+basePath: "/"
+# [END swagger]
+consumes:
+- "application/json"
+produces:
+- "application/json"
+schemes:
+- "https"
+parameters:
+  categoryParam:
+    in: path
+    name: category
+    required: true
+    type: string
+    description: The category ID for a QuickDraw drawing
+  isAnimatedParam:
+    in: query
+    name: isAnimated
+    description: If drawing data points are to be drawn out in a sequence over time, or a static drawing
+    required: false
+    type: boolean
+  formatParam:
+    in: query
+    name: format
+    description: The format of the response, either in JSON or HTML (Canvas)
+    required: false
+    type: string
+    enum: [json, html, canvas]
+  idParam:
+    in: query
+    name: id
+    description: The id for an individual drawing within a category (typically the number index that is also the filename)
+    required: false
+    type: integer
+paths:
+  "/drawing/{category}/count":
+    get:
+      operationId: "get_category_count"
+      parameters:
+        - $ref: "#/parameters/categoryParam"
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The total count of drawings within a certain category
+          schema:
+            $ref: '#/definitions/CategoryModel'
+  "/drawing/{category}":
+    get:
+      x-google-quota:
+        metricCosts:
+          drawingDataRequests: 1
+      operationId: "get_random"
+      parameters:
+        - $ref: "#/parameters/categoryParam"
+        - $ref: "#/parameters/isAnimatedParam"
+        - $ref: "#/parameters/formatParam"
+        - $ref: "#/parameters/idParam"
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/CategoryModel'
+definitions:
+  CategoryModel:
+    properties:
+      count:
+        type: string
+# This section requires all requests to any path to require an API key.
+security:
+- api_key: []
+securityDefinitions:
+  # This section configures basic authentication with an API key.
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+x-google-management:
+  metrics:
+    - name: "drawingDataRequests"
+      displayName: "DrawingDataRequests"
+      valueType: INT64
+      metricKind: DELTA
+  quota:
+    limits:
+      - name: "drawing-data-request-limit"
+        metric: "drawingDataRequests"
+        unit: "1/min/{project}"
+        values:
+          STANDARD: 120

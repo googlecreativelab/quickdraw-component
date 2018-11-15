@@ -1,0 +1,21 @@
+{
+  "name": "quickdraw-component",
+  "description": "A web component & API for quickly drawing QuickDraw drawings",
+  "main": "quickdraw-component.js",
+  "scripts": {
+    "start": "polymer serve --open ./ --port 8080 --module-resolution='node'",
+    "build": "polymer build",
+    "test": "polymer test"
+  },
+  "dependencies": {
+    "@polymer/lit-element": "^0.6.1",
+    "@polymer/polymer": "^3.0.0-pre.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@webcomponents/webcomponentsjs": "^1.0.0",
+    "wct-browser-legacy": "^1.0.2"
+  }
+}

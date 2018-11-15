@@ -1,0 +1,82 @@
+html
+  
+  head
+    title= title
+  
+  body
+    
+    canvas(id='canvas', width='800', height='800')
+    
+    script.
+      
+      let canvasEl = document.getElementById('canvas')
+      let ctx = canvasEl.getContext('2d');
+      let strokeWidth = 4;
+
+      //- get properties of image given points
+      function getDrawingProperties(points){
+        let x_range = {min: 99999, max: 0},
+          y_range = {min: 99999, max: 0};
+        for(let i = 0; i < points.length; i++){
+          let stroke_len = points[i][0].length;
+          for(let j = 0; j < stroke_len; j++){
+            let this_x = points[i][0][j],
+              this_y = points[i][1][j];
+            if(this_x < x_range.min) x_range.min = this_x;
+            else if(this_x > x_range.max) x_range.max = this_x;
+            if(this_y < y_range.min) y_range.min = this_y;
+            else if(this_y > y_range.max) y_range.max = this_y;
+          }
+        }
+        return {
+          x_range: x_range, 
+          y_range: y_range, 
+          width: x_range.max - x_range.min + (strokeWidth * 2), 
+          height: y_range.max - y_range.min + (strokeWidth * 2),
+          x: x_range.min,
+          y: y_range.min
+        };
+      }
+
+      function transformPoint(x, y){
+        x = (x - drawingProperties.x) * 1 + strokeWidth;
+        y = (y - drawingProperties.y) * 1 + strokeWidth;
+        return {x: x, y: y};
+      }
+        
+
+      //- access drawing data that's passed in from server
+      let data = !{JSON.stringify(data).replace(/<\//g, '<\\/')}
+      let drawingProperties = getDrawingProperties(data.drawing);
+
+      canvasEl.width = drawingProperties.width;
+      canvasEl.height = drawingProperties.height;
+      
+      //- set up stroke properties
+      ctx.lineJoin = ctx.lineCap = 'round';
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = '#000000';
+      ctx.beginPath();
+      
+      //- move to start position
+      var {x, y} = transformPoint(data.drawing[0][0], data.drawing[0][1]);
+      ctx.moveTo(x, y);
+      //- loop through and draw points
+      for(var i = 0; i < data.drawing.length; i++){
+        var len = data.drawing[i][0].length;
+        for(var j = 0; j < len; j++){
+          
+          const this_x = data.drawing[i][0][j];
+          const this_y = data.drawing[i][1][j];
+          const {x, y} = transformPoint(this_x, this_y);
+
+          if(j === 0){
+            ctx.moveTo(x, y);
+          }
+          if(j > 0){
+            ctx.lineTo(x, y);
+          }
+        }
+        ctx.stroke();
+      }
+

@@ -1,0 +1,38 @@
+{
+  "npm": true,
+  "entrypoint": "demo/index.html",
+  "extraDependencies": [
+    "categories.js",
+    "index.html",
+    "node_modules/@webcomponents/webcomponentsjs/*.js",
+    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",
+    "node_modules/@webcomponents/webcomponentsjs/bundles/*.js",
+    "demo/static/**/*"
+  ],
+  "builds": [
+    {
+      "name": "es5-unbundled",
+      "js": {
+        "minify": false,
+        "compile": "es5",
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": false 
+      },
+      "html": {
+        "minify": false 
+      },
+      "bundle": false,
+      "addServiceWorker": false,
+      "addPushManifest": false,
+      "preset": "es5-bundled"
+    }
+  ],
+  "moduleResolution": "node",
+  "lint": {
+    "rules": [
+      "polymer-3"
+    ]
+  }
+}

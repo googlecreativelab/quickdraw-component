@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>quickdraw-component test</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+
+    <script type="module" src="../quickdraw-component.js"></script>
+  </head>
+  <body>
+
+    <test-fixture id="BasicTestFixture">
+      <template>
+        <quick-draw category="cat" key="AIzaSyD7LwgIw5plzU4NvpqdvbEk3eOn0wiUsLs"></quick-draw>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="BooleanProperties">
+      <template>
+        <quick-draw category="cat" key="AIzaSyD7LwgIw5plzU4NvpqdvbEk3eOn0wiUsLs" animated debug paused></quick-draw>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="AnimatedDataTest">
+      <template>
+        <quick-draw category="banana" index="10" key="AIzaSyD7LwgIw5plzU4NvpqdvbEk3eOn0wiUsLs"></quick-draw>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+      suite('quickdraw-component', () => {
+
+        test('instantiating the element with default properties works', () => {
+          const element = fixture('BasicTestFixture');
+          assert.equal(element.animated, false);
+        });
+
+        test('alternate text is given inside canvas element for screen readers', () => {
+          const element = fixture('BasicTestFixture');
+          element.addEventListener('drawingComplete', function(){
+            setTimeout(() => {
+              const elementShadowRoot = element.shadowRoot;
+              const htmlCommentRegex = /<!--[\s\S]*?-->/g;
+              const altText = elementShadowRoot.querySelector('canvas').innerHTML.replace(htmlCommentRegex, '');
+              assert.equal(altText, 'cat');
+            });
+          });
+        })
+
+        test('testing boolean properties', () => {
+          const element = fixture('BooleanProperties');
+          assert.equal(element.animated, true);
+          assert.equal(element.debug, true);
+          assert.equal(element.paused, true);
+        });
+
+        test('time dimension when animated vs not animated', () => {
+          const element = fixture('AnimatedDataTest');
+          let arrayDimension = 2;
+          element.addEventListener('drawingData', function(){
+            // starts off static, no time data
+            assert.equal(element.imageData.drawing[0].length, arrayDimension);
+            arrayDimension = 3;
+            element.animated = true; // this should kick off a new load to get data with ahimated property
+          });
+        });
+
+
+
+      });
+    </script>
+
+  </body>
+</html>

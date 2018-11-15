@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+         <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85918250-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-85918250-3', {
+            'referrer' : document.referrer.split('?')[0], 
+        });
+    </script>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="static/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Karla:700,400|Roboto+Mono:400,300" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="https://quickdraw.withgoogle.com/static/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="https://quickdraw.withgoogle.com/static/favicon-152.png">
+    <link rel="shortcut icon" sizes="196x196" href="https://quickdraw.withgoogle.com/static/favicon-196.png">
+
+    <title>Quick, Draw! Component &amp; API</title>
+
+    <meta property="og:title" content="Quick, Draw! The Data">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://googlecreativelab.github.io/quickdrawcomponent">
+    <meta property="og:image" content="https://quickdraw.withgoogle.com/data/static/images/share-embed.jpg">
+    <meta property="og:description" content="An easy-to-use web component and API to give you access to over 46 million Quick, Draw! doodles">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@google">
+    <meta name="twitter:title" content="Quick, Draw! The Data">
+    <meta name="twitter:description" content="An easy-to-use web component and API to give you access to over 46 million Quick, Draw! doodles">
+    <meta name="twitter:image" content="https://quickdraw.withgoogle.com/data/static/images/share-embed.jpg">
+
+    <meta itemprop="name" content="Quick, Draw! The Data">
+    <meta itemprop="description" content="An easy-to-use web component and API to give you access to over 46 million Quick, Draw! doodles">
+    <meta itemprop="image" content="https://quickdraw.withgoogle.com/data/static/images/share-embed.jpg">
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="static/js/categories.js"></script>
+    <script src="static/js/categories-count-dict.js"></script>
+    <script type="module" src="../quickdraw-component.js"></script>
+
+  </head>
+  <body>
+
+      <div id="header" class="header-shadow">
+        <img id="hamburger" src="static/images/ham.svg">
+        <h1 class="logo" id="header-title">Quick, Draw! The Component</h1>
+
+        <div id="rightnav">
+          <a href="https://github.com/googlecreativelab/quickdraw-component" target="_blank">
+              <img src="static/images/github.svg">
+              Get the component
+          </a>
+          <a href="https://quickdraw.withgoogle.com/" target="_blank">
+              <img src="static/images/play.svg">
+              Play the game
+          </a>
+        </div>
+      </div>
+
+      <div id="content">
+        <div id="frontpage">
+          <div id="scroller">
+            <div id="intro">
+
+              <h4 class="section-header">How does it work?</h4>          
+              <p class="desc">With just one line, you can add one of over 46 million Quick, Draw! doodles to your project.</p>
+              <div class="category-selector">
+                Draw a: <select id="select-category"></select><a href="#" class="refresh"><img src="static/images/ic_refresh_black_24dp.svg" alt="Refresh"></a>
+              </div>
+
+              <div class="timing-options">
+                <a href="#" class="timing-option selected" data-id="original">Original speed</a>
+                <a href="#" class="timing-option" data-id="one-second">1 second</a>
+                <a href="#" class="timing-option" data-id="five-seconds">5 seconds</a>
+                <a href="#" class="timing-option" data-id="no-animate">Don't animate</a>
+              </div>
+
+              <div class="options">
+                <ul class="colors">
+                  <li class="selected" data-color="#000"><div class="bg"></div></li>
+                  <li data-color="#ffd139"><div class="bg"></div></li>
+                  <li data-color="#ee7aaa"><div class="bg"></div></li>
+                </ul>
+              </div>
+
+              <div class="code-example">
+                <code>&lt;quick-draw category="<span id="example-value">cat</span>"<span id="stroke-color"></span><span id="timing"> animate</span>&gt;&lt;/quick-draw&gt;</code>
+              </div>
+
+              <quick-draw category="cat" key="AIzaSyCUclBwz7ZyP_hx9U94p3C5L2OQocyQMXs" index="58861" animated="" debug=""></quick-draw>
+
+              <p class="drawing-index">#<span id="drawing-id"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <script src="static/js/demo.js"></script>
+
+  </body>
+</html>

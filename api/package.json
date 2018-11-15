@@ -1,0 +1,37 @@
+{
+  "name": "quickdraw-data-api",
+  "description": "An API middlelayer for Quick, Draw! Files stored in GCS",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Google Inc.",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "lint": "repo-tools lint",
+    "pretest": "npm run lint",
+    "test": "repo-tools test run --cmd ava -- -T 20s --verbose test/*.test.js",
+    "deploy": "gcloud app deploy",
+    "deploy-spec": "gcloud endpoints services deploy openapi-appengine.yaml"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^1.7.0",
+    "body-parser": "1.18.2",
+    "cors": "^2.8.4",
+    "express": "4.16.2",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "^2.3.0",
+    "ava": "0.25.0",
+    "proxyquire": "2.0.0",
+    "sinon": "4.4.2",
+    "supertest": "3.0.0"
+  }
+}
