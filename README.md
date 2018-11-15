@@ -84,7 +84,7 @@ It is *highly encouraged* for any large project to not use the demo endpoint as 
 
 You can listen for the following custom events from the component:
 
-| Name		    | Description	| Return |
+| Name		    | Description	 | Return       |
 | ----------- | :-----------:| :-----------:|
 | `drawingData` | When drawing data is received | `{detail: {index, category, data}}`
 | `drawingComplete` | When drawing is completed | `{detail: {index, category, data}}`
@@ -122,8 +122,8 @@ This component has a server-side dependency, which can be reached from this endp
 
 ```https://quickdrawfiles.appspot.com/drawing/{category}?id={id}&key={key}&isAnimated={isAnimated}&format={format}```
 
-| Name		     | Description | Type		  | Default
-| :----------- | :-----------:| :-----------:| :-----------:|---------:|
+| Name		     | Description | Type		  | Default |
+| :----------- | :-----------:| :-----------:| -----------:|
 | `category` **required* | One of the [available categories](./categories.js) | String | null
 | `id` **required* | ID (number) or "random" | String | null
 | `key` **required* | API Key ([see above for instructions](#getting-a-demo-api-key)) | String | null
