@@ -9,9 +9,9 @@ This component is built using [Polymer3](https://www.polymer-project.org/) and i
 
 ### Background
 
-In October 2016 we released [Quick, Draw!](https://quickdraw.withgoogle.com), a game to test your ability to doodle and have a nueural net guess what you're drawing. You can help teach it by adding your drawings to the world’s largest doodling data set, shared publicly to help with machine learning research. 
+In October 2016 we released [Quick, Draw!](https://quickdraw.withgoogle.com), a game to test your ability to doodle and have a neural net guess what you're drawing. You can help teach it by adding your drawings to the world’s largest doodling data set, shared publicly to help with machine learning research. 
 
-Since the release, we've collected over 1 billion drawings across 345 categories. We've [released the data](https://github.com/googlecreativelab/quickdraw-dataset) in the form of [very large ndjson files](https://pantheon.corp.google.com/storage/browser/quickdraw_dataset/full/raw) of moderated doodles. Now we are releasing a data API, a Polymer web component, and an option to self-host the 50 million files.
+Since the release, we've collected over 1 billion drawings across 345 categories. We've [released the data](https://github.com/googlecreativelab/quickdraw-dataset) in the form of [very large ndjson files](https://github.com/googlecreativelab/quickdraw-dataset/blob/master/examples/nodejs/ndjson.md) of moderated doodles. Now we are releasing a data API, a Polymer web component, and an option to self-host the 50 million files.
 
 ## Run example
 
@@ -55,11 +55,11 @@ It is *highly encouraged* for any large project to not use the demo endpoint as 
 
 1. [Join the Quick Draw API Google Group](https://groups.google.com/forum/#!forum/quick-draw-data-api).
 
-2. In your project on Google Cloud Platform, go to [APIs & Services > Library](https://pantheon.corp.google.com/apis/library) and search for "Quick, Draw! API"
+2. In your project on Google Cloud Platform, go to [APIs & Services > Library](https://console.developers.google.com/apis/library/quickdrawfiles.appspot.com) and search for "Quick, Draw! API"
 
 3. Click into Quick, Draw! Data API and press "Enable"
 
-4. If you haven't created an API Key yet for your project, go into [APIs & Services > Credentials](https://pantheon.corp.google.com/apis/credentials) and create one.  This is what you'll use in the `key` property of: `<quick-draw key="YOUR_API_KEY"></quick-draw>`
+4. If you haven't created an API Key yet for your project, go into [APIs & Services > Credentials](https://console.developers.google.com/apis/credentials) and create one.  This is what you'll use in the `key` property of: `<quick-draw key="YOUR_API_KEY"></quick-draw>`
 
 
 ### Options
@@ -137,7 +137,7 @@ You can also retrieve the total count of drawings within a category using:
 
 ## Self-Hosting
 
-It's highly encouraged that you self-host for larger, more serious projects as the quota limits are subject to change with this one (and it's not gauranteed to be supported / maintained forever).  View the [README.md](./api/README.md) in the API directory to learn more about how to self-host the files and the API.
+It's highly encouraged that you self-host for larger, more serious projects as the quota limits are subject to change with this one (and it's not guaranteed to be supported / maintained forever).  View the [README.md](./api/README.md) in the API directory to learn more about how to self-host the files and the API.
 
 ## Contributing
 1. Fork it!
