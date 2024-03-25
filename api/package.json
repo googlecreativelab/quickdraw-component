@@ -24,7 +24,7 @@
     "@google-cloud/storage": "^1.7.0",
     "body-parser": "1.18.2",
     "cors": "^2.8.4",
-    "express": "4.16.2",
+    "express": "4.19.2",
     "pug": "^2.0.3"
   },
   "devDependencies": {
