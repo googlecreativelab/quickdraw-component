@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^1.7.0",
-    "body-parser": "1.18.2",
+    "body-parser": "1.20.3",
     "cors": "^2.8.4",
     "express": "4.16.2",
     "pug": "^2.0.3"
