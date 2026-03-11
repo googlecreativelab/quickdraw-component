@@ -21,7 +21,7 @@
     "deploy-spec": "gcloud endpoints services deploy openapi-appengine.yaml"
   },
   "dependencies": {
-    "@google-cloud/storage": "^1.7.0",
+    "@google-cloud/storage": "^7.8.0",
     "body-parser": "1.18.2",
     "cors": "^2.8.4",
     "express": "4.16.2",
