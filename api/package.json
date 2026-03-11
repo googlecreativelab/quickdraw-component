@@ -28,7 +28,7 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
-    "@google-cloud/nodejs-repo-tools": "^2.3.0",
+    "@google-cloud/nodejs-repo-tools": "^3.3.0",
     "ava": "0.25.0",
     "proxyquire": "2.0.0",
     "sinon": "4.4.2",
